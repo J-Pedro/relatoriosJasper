@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.15.0.final using JasperReports Library version 6.15.0-dd49bfb94918336b8321d5507193f0169ead4e95  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="desafio-01" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="fddb8d1b-010c-4eba-818d-59620bc2455b">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MySQL Udemy Data adapter"/>
+	<style name="estilo_cor_alternada" mode="Opaque" backcolor="#FFFFFF">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}% 2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#CCFFFF"/>
+		</conditionalStyle>
+	</style>
+	<queryString language="SQL">
+		<![CDATA[select f.id_funcionario, f.nome, f.data_nascimento, f.data_admissao, f.data_demissao
+from funcionarios f
+where f.data_demissao is not null
+order by data_demissao]]>
+	</queryString>
+	<field name="id_funcionario" class="java.lang.Long"/>
+	<field name="nome" class="java.lang.String"/>
+	<field name="data_nascimento" class="java.sql.Date"/>
+	<field name="data_admissao" class="java.sql.Date"/>
+	<field name="data_demissao" class="java.sql.Date"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="70" splitType="Stretch">
+			<image>
+				<reportElement mode="Opaque" x="0" y="0" width="572" height="70" backcolor="#00D4FF" uuid="0873f367-fbd6-4f7d-9732-896b5e3fd72e"/>
+				<imageExpression><![CDATA["images/logo-555x50.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="30" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="572" height="30" uuid="5797148f-993f-4218-8b00-a1d77641b794"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Funcionário Demitidos]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="30" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="90" height="30" forecolor="#FFFFFF" backcolor="#000000" uuid="0aaa0e67-a14b-4bfa-8221-3a9750a5b2e5"/>
+				<box padding="5">
+					<pen lineWidth="1.0" lineColor="#E0E0E0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Código]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="90" y="0" width="130" height="30" forecolor="#FFFFFF" backcolor="#000000" uuid="7d004f4b-9881-4e91-8b80-c0f27bd9f727"/>
+				<box padding="5">
+					<pen lineWidth="1.0" lineColor="#E0E0E0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Nome]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="220" y="0" width="124" height="30" forecolor="#FFFFFF" backcolor="#000000" uuid="5ad62d88-b94f-4867-a5f7-5ba200bca1bc"/>
+				<box padding="5">
+					<pen lineWidth="1.0" lineColor="#E0E0E0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Data de Nascimento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="344" y="0" width="114" height="30" forecolor="#FFFFFF" backcolor="#000000" uuid="ccba4db5-94d6-493b-9275-ddf1ffe62f53"/>
+				<box padding="5">
+					<pen lineWidth="1.0" lineColor="#E0E0E0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Data de admissão]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="458" y="0" width="114" height="30" forecolor="#FFFFFF" backcolor="#000000" uuid="785b79db-99a5-4f0e-ab8b-c1a914c0969c"/>
+				<box padding="5">
+					<pen lineWidth="1.0" lineColor="#E0E0E0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Data de Demissão]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="30" splitType="Stretch">
+			<textField>
+				<reportElement style="estilo_cor_alternada" mode="Opaque" x="0" y="0" width="90" height="30" backcolor="#FFFFFF" uuid="c593598e-3f7a-44dc-9915-f5de9a0a3e68"/>
+				<box padding="5">
+					<pen lineWidth="1.0" lineColor="#E0E0E0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{id_funcionario}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="estilo_cor_alternada" mode="Opaque" x="90" y="0" width="130" height="30" backcolor="#FFFFFF" uuid="de9d2fa1-abe4-42d0-ba37-b01b30c4a140"/>
+				<box padding="5">
+					<pen lineWidth="1.0" lineColor="#E0E0E0"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement style="estilo_cor_alternada" mode="Opaque" x="220" y="0" width="124" height="30" backcolor="#FFFFFF" uuid="1b456094-d2a2-4053-ac26-3097f2601d84"/>
+				<box padding="5">
+					<pen lineWidth="1.0" lineColor="#E0E0E0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="styled"/>
+				<textFieldExpression><![CDATA[$F{data_nascimento}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement style="estilo_cor_alternada" mode="Opaque" x="344" y="0" width="114" height="30" backcolor="#FFFFFF" uuid="4379c7fb-a251-4985-a577-30e949a56c6b"/>
+				<box padding="5">
+					<pen lineWidth="1.0" lineColor="#E0E0E0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="styled"/>
+				<textFieldExpression><![CDATA[$F{data_admissao}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement style="estilo_cor_alternada" mode="Opaque" x="458" y="0" width="114" height="30" backcolor="#FFFFFF" uuid="ec79ad48-9782-49b5-b57f-a7b5e27b3c61"/>
+				<box padding="5">
+					<pen lineWidth="1.0" lineColor="#E0E0E0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="styled"/>
+				<textFieldExpression><![CDATA[$F{data_demissao}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
